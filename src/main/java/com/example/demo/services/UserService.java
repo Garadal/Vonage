@@ -29,9 +29,9 @@ public class UserService implements IUserService {
     }
 
     public void deleteUnverifiedUsers() {
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime threeMinutesAgo = now.minusMinutes(3);
-        userRepository.deleteByIsVerifiedFalseAndRegistrationTimeBefore(threeMinutesAgo);
+        LocalDateTime threeMinutesAgo = LocalDateTime.now().minusMinutes(3);
+        List<User> users = userRepository.findByregistrationTimeBeforeAndIsVerified(threeMinutesAgo, false);
+        userRepository.deleteAll(users);
     }
 
     public User register(UserDTO userDTO) {
