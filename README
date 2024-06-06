@@ -1,0 +1,63 @@
+## Prerequisites
+
+Before you start, make sure you have the following installed:
+
+- Java 17 or newer
+- Gradle
+- A Vonage account with an API key and secret
+
+## Getting Started
+
+## Setup
+
+1. Clone the repository:
+
+2. Navigate to the project directory:
+
+3. Add your Vonage API credentials in `src/main/resources/application.properties`:
+    ```properties
+    vonage.api.key=your_api_key_here
+    vonage.api.secret=your_api_secret_here
+    ```
+
+4. Build the project using Gradle:
+    ```bash
+    ./gradlew build
+    ```
+
+5. Run the application:
+    ```bash
+    ./gradlew bootRun
+    ```
+
+## Endpoints
+
+### Register a User
+- **URL:** `/users/register`
+- **Method:** `POST`
+- **Request Body:**
+    ```json
+    {
+        "username": STRING,
+        "email": STRING,
+        "phoneNumber": STRING,
+        "password": STRING
+    }
+    ```
+
+### Activate a User
+- **URL:** `/users/activate`
+- **Method:** `POST`
+- **Request Body:**
+    ```json
+    {
+        "username": STRING,
+        "verificationCode": (STRING)Verification_Code
+    }
+    ```
+- **Response:** User object
+
+## Testing
+To run the tests:
+```bash
+./gradlew test
